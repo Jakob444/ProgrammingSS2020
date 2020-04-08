@@ -19,6 +19,8 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 library(tidyverse) 
 athlets <- read.csv("participants.csv")
+#Verbesserung
+sportler <- readr::read_csv("participants.csv")
 
 ```
 
@@ -55,7 +57,10 @@ erg <- unat %>%
 erg %>% arrange(desc(erg$`n()`)) %>%
   top_n(10)
 
-
+#Verbesserung
+ergeb <- athlets %>% group_by(country) %>% summarise(n = n_distinct(athlete)) %>% arrange(-n)
+                                            
+                                            
 ```
 
 # Body mass index
